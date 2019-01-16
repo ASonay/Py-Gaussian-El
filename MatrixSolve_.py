@@ -1,4 +1,5 @@
 import numpy as np
+import sys
 
 class MatrixSolve:
 
@@ -18,7 +19,13 @@ class MatrixSolve:
     
     def GaussianElimination(self,mat,vec):
         n = mat.shape[0]
-       
+        m = mat.shape[1]
+        
+        if n!=m:
+            print("\nNon-squared matrix detected!!")
+            print("Try another method...")
+            sys.exit()
+      
         for k in range(n):
             imax = self.FindMax(mat,k)
             if mat[imax][k] == 0:
@@ -43,12 +50,16 @@ class MatrixSolve:
         m = mat.shape[1]
         x = [0.] * n
 
+        if n != vec.shape[0]:
+            print("\nVector size different than matrix size!\n")
+            sys.exit()
+
         cond = self.GaussianElimination(mat,vec)
         
-        if cond == True or n!=m:
-            print "\nNon-squared or singular matrix detected!!"
-            print "Try another method..."
-            return 0
+        if cond == True:
+            print("\nSingular matrix detected!!")
+            print("Try another method...")
+            sys.exit()
         
         for i in range(n-1,-1,-1):
             s = 0.

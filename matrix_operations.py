@@ -5,10 +5,9 @@ from MatrixSolve_ import MatrixSolve as ms
 
 def ProveResult(mat,vecx,vecy):
     if all(abs(vecy-np.dot(mat,vecx)) < 1e-10):
-        print "Solution is true:"
-        print vecx, "\n"
+        print("Solution is true:")
     else:
-        print "Solution is wrong!\n"
+        print("Solution is wrong!\n")
 
 def PlotText(mat):
     for i in range(mat.shape[0]):
@@ -23,14 +22,15 @@ def PlotText(mat):
 solver = ms()
 
 #GAUSSIAN ELIMINATION-----------------------//
-print "\nGaussian elimination for matrix A..."
-A = np.random.random((5,5))
-Y = np.random.random(5)
+print("\nGaussian elimination for matrix A...")
+A = np.random.random((8,8))
+Y = np.random.random(8)
 
 #Check if matrix applicable
 AGE = A.copy()
 YGE = Y.copy()
-print "Is matrix A applicable for gaussian elimination: ",solver.GaussianElimination(AGE,YGE) == False
+print("Is matrix A applicable for gaussian elimination: ",
+      solver.GaussianElimination(AGE,YGE) == False)
 
 #Solve matrix A for vector Ya with
 #Gaussian elimination.
@@ -42,11 +42,11 @@ ProveResult(A,X,Y)
 #PRINT WITH PANDA---------------------------//
 pd.options.display.float_format = '{:,.2f}'.format
 SHOWLM = pd.DataFrame(A)
-SHOWLM['MP'] = ['','','X','','']
+SHOWLM['  .  '] = ["" for x in range(A.shape[0]) ]
 SHOWLM['X'] = X
-SHOWLM['EQ'] = ['','','=','','']
+SHOWLM['  =  '] = ["" for x in range(A.shape[0]) ]
 SHOWLM['Y'] = Y
-print SHOWLM
+print(SHOWLM)
 
 
 #DRAW WITH PYPLOT----------------------------//
