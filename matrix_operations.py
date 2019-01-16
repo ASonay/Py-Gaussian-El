@@ -46,8 +46,6 @@ SHOWLM['MP'] = ['','','X','','']
 SHOWLM['X'] = X
 SHOWLM['EQ'] = ['','','=','','']
 SHOWLM['Y'] = Y
-SHOWLM.rename(columns={0:'r1',1:'r2',2:'r3',3:'r4',4:'r5'}, inplace=True)
-SHOWLM.rename(index={0:'c1',1:'c2',2:'c3',3:'c4',4:'c5'}, inplace=True)
 print SHOWLM
 
 
